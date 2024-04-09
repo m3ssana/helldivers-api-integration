@@ -3,7 +3,7 @@
 #
 
 # Call the REST API  
-$apiUrl = https://helldiverstrainingmanual.com/api/v1/war/campaign  
+$apiUrl = "https://helldiverstrainingmanual.com/api/v1/war/campaign"  
 $response = Invoke-RestMethod -Uri $apiUrl -Method Get  
 
  
@@ -14,7 +14,7 @@ $defensePlanets = $response | Where-Object {$_.defense -eq $true}
  
 
 # Display the planets that need immediate MANAGED DEMOCRACY
-write-host "HELLDIVERS! We must defened these planets NOW!" -ForegroundColor Yellow
+Write-Warning "HELLDIVERS! We must defened these planets NOW!" 
 
 foreach($planet in $defensePlanets){  
 
@@ -32,7 +32,7 @@ foreach($planet in $defensePlanets){
 $otherPlanets = $response | Where-Object {$_.defense -eq $false}
 
 # Display planets that are not marked for defense
-write-host "Other planets in need of Managed Democracy!" -ForegroundColor Yellow
+write-host "Other planets in need of Managed Democracy!" -ForegroundColor Green
 
 foreach($planet in $otherPlanets){  
 
